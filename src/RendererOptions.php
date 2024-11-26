@@ -72,7 +72,6 @@ class RendererOptions extends AbstractOptions
     }
 
     /**
-     * @param array $hydrators
      * @return void
      */
     public function setHydrators(array $hydrators)

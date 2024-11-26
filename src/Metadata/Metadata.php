@@ -571,7 +571,6 @@ class Metadata
     /**
      * Set route options for URL generation
      *
-     * @param  array $options
      * @return self
      */
     public function setRouteOptions(array $options)

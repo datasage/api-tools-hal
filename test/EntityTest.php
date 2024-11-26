@@ -17,7 +17,7 @@ use const E_USER_DEPRECATED;
 
 class EntityTest extends TestCase
 {
-    public function invalidEntities(): array
+    public static function invalidEntities(): array
     {
         return [
             'null'       => [null],
@@ -91,7 +91,7 @@ class EntityTest extends TestCase
         self::assertNull($hal->getId());
     }
 
-    public function magicProperties(): array
+    public static function magicProperties(): array
     {
         return [
             'entity' => ['entity'],

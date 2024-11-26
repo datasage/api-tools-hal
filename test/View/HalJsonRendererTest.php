@@ -32,7 +32,7 @@ class HalJsonRendererTest extends TestCase
     /**
      * @return array<string,array<array-key,mixed>>
      */
-    public function nonHalJsonModels()
+    public static function nonHalJsonModels()
     {
         return [
             'view-model'      => [new ViewModel(['name' => 'foo'])],
