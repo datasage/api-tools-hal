@@ -141,7 +141,6 @@ class Collection implements Link\LinkCollectionAwareInterface
     /**
      * Set additional attributes to render as part of the collection
      *
-     * @param  array $attributes
      * @return self
      */
     public function setAttributes(array $attributes)

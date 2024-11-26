@@ -84,7 +84,7 @@ class HalJsonStrategyTest extends TestCase
     /**
      * @return array<string, array<array-key, mixed>>
      */
-    public function halObjects()
+    public static function halObjects()
     {
         $entity = new Entity([
             'foo' => 'bar',

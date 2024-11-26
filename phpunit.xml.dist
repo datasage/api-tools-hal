@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="./vendor/autoload.php" colors="true" xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd">
-  <coverage processUncoveredFiles="true">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="./vendor/autoload.php" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd" cacheDirectory=".phpunit.cache">
+  <testsuites>
+    <testsuite name="LaminasHal Module Tests">
+      <directory>./test</directory>
+    </testsuite>
+  </testsuites>
+  <source>
     <include>
       <directory suffix=".php">src</directory>
     </include>
     <exclude>
       <file>./src/Extractor/EntityExtractorHydratorV3.php</file>
     </exclude>
-  </coverage>
-  <testsuites>
-    <testsuite name="LaminasHal Module Tests">
-      <directory>./test</directory>
-    </testsuite>
-  </testsuites>
+  </source>
 </phpunit>

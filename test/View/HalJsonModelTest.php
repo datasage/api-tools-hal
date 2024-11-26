@@ -35,7 +35,7 @@ class HalJsonModelTest extends TestCase
     /**
      * @return array
      */
-    public function invalidPayloads()
+    public static function invalidPayloads()
     {
         return [
             'null'       => [null],
@@ -54,9 +54,9 @@ class HalJsonModelTest extends TestCase
     /**
      * @return array<string,array<array-key,mixed>>
      */
-    public function invalidCollectionPayloads()
+    public static function invalidCollectionPayloads()
     {
-        $payloads              = $this->invalidPayloads();
+        $payloads              = self::invalidPayloads();
         $payloads['exception'] = [new Exception()];
         $payloads['stdclass']  = [new stdClass()];
         $payloads['hal-item']  = [new Entity([], 'id')];
@@ -83,9 +83,9 @@ class HalJsonModelTest extends TestCase
     /**
      * @return array<string,array<array-key,mixed>>
      */
-    public function invalidEntityPayloads()
+    public static function invalidEntityPayloads()
     {
-        $payloads                   = $this->invalidPayloads();
+        $payloads                   = self::invalidPayloads();
         $payloads['exception']      = [new Exception()];
         $payloads['stdclass']       = [new stdClass()];
         $payloads['hal-collection'] = [new Collection([], 'item/route')];

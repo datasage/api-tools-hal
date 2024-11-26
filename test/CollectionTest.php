@@ -13,7 +13,7 @@ use stdClass;
 
 class CollectionTest extends TestCase
 {
-    public function invalidCollections(): array
+    public static function invalidCollections(): array
     {
         return [
             'null'       => [null],

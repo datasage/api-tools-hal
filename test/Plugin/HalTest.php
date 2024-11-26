@@ -166,7 +166,7 @@ class HalTest extends TestCase
     }
 
     /** @psalm-return class-string */
-    public function getObjectPropertyHydratorClass(): string
+    public static function getObjectPropertyHydratorClass(): string
     {
         return class_exists(Hydrator\ObjectPropertyHydrator::class)
             ? Hydrator\ObjectPropertyHydrator::class
@@ -284,19 +284,19 @@ class HalTest extends TestCase
 
         $metadata = new MetadataMap([
             TestAsset\Entity::class                             => [
-                'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                'hydrator'               => self::getObjectPropertyHydratorClass(),
                 'route_name'             => 'hostname/resource',
                 'route_identifier_name'  => 'id',
                 'entity_identifier_name' => 'id',
             ],
             TestAsset\EmbeddedEntity::class                     => [
-                'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                'hydrator'               => self::getObjectPropertyHydratorClass(),
                 'route'                  => 'hostname/embedded',
                 'route_identifier_name'  => 'id',
                 'entity_identifier_name' => 'id',
             ],
             TestAsset\EmbeddedEntityWithCustomIdentifier::class => [
-                'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                'hydrator'               => self::getObjectPropertyHydratorClass(),
                 'route'                  => 'hostname/embedded_custom',
                 'route_identifier_name'  => 'custom_id',
                 'entity_identifier_name' => 'custom_id',
@@ -333,23 +333,23 @@ class HalTest extends TestCase
         $entity               = new Entity($object, 'foo');
         $self                 = new Link('self');
         $self->setRoute('hostname/resource', ['id' => 'foo']);
-        $entity->getLinks()->add($self);
+        $entity->getLinks()->idempotentAdd($self);
 
         $metadata = new MetadataMap([
             TestAsset\Entity::class                             => [
-                'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                'hydrator'               => self::getObjectPropertyHydratorClass(),
                 'route_name'             => 'hostname/resource',
                 'route_identifier_name'  => 'id',
                 'entity_identifier_name' => 'id',
             ],
             TestAsset\EmbeddedEntity::class                     => [
-                'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                'hydrator'               => self::getObjectPropertyHydratorClass(),
                 'route'                  => 'hostname/embedded',
                 'route_identifier_name'  => 'id',
                 'entity_identifier_name' => 'id',
             ],
             TestAsset\EmbeddedEntityWithCustomIdentifier::class => [
-                'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                'hydrator'               => self::getObjectPropertyHydratorClass(),
                 'route'                  => 'hostname/embedded_custom',
                 'route_identifier_name'  => 'custom_id',
                 'entity_identifier_name' => 'custom_id',
@@ -459,7 +459,7 @@ class HalTest extends TestCase
                 'entity_identifier_name' => 'id',
             ],
             TestAsset\Entity::class     => [
-                'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                'hydrator'               => self::getObjectPropertyHydratorClass(),
                 'route_name'             => 'hostname/resource',
                 'route_identifier_name'  => 'id',
                 'entity_identifier_name' => 'id',
@@ -510,11 +510,11 @@ class HalTest extends TestCase
 
         $metadata = new MetadataMap([
             TestAsset\EmbeddedEntity::class                     => [
-                'hydrator' => $this->getObjectPropertyHydratorClass(),
+                'hydrator' => self::getObjectPropertyHydratorClass(),
                 'route'    => 'hostname/embedded',
             ],
             TestAsset\EmbeddedEntityWithCustomIdentifier::class => [
-                'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                'hydrator'               => self::getObjectPropertyHydratorClass(),
                 'route'                  => 'hostname/embedded_custom',
                 'route_identifier_name'  => 'custom_id',
                 'entity_identifier_name' => 'custom_id',
@@ -525,7 +525,7 @@ class HalTest extends TestCase
                 'entity_route'  => 'hostname/embedded',
             ],
             TestAsset\Entity::class                             => [
-                'hydrator'   => $this->getObjectPropertyHydratorClass(),
+                'hydrator'   => self::getObjectPropertyHydratorClass(),
                 'route_name' => 'hostname/resource',
             ],
         ]);
@@ -775,7 +775,7 @@ class HalTest extends TestCase
 
         $metadata = new MetadataMap([
             TestAsset\Entity::class => [
-                'hydrator'   => $this->getObjectPropertyHydratorClass(),
+                'hydrator'   => self::getObjectPropertyHydratorClass(),
                 'route_name' => 'hostname/resource',
                 'links'      => [
                     [
@@ -972,7 +972,7 @@ class HalTest extends TestCase
 
         $metadata = new MetadataMap([
             TestAsset\Entity::class     => [
-                'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                'hydrator'               => self::getObjectPropertyHydratorClass(),
                 'route_name'             => 'hostname/resource',
                 'route_identifier_name'  => 'id',
                 'entity_identifier_name' => 'id',
@@ -1089,7 +1089,7 @@ class HalTest extends TestCase
     {
         $metadata = new MetadataMap([
             TestAsset\Entity::class => [
-                'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                'hydrator'               => self::getObjectPropertyHydratorClass(),
                 'route_name'             => 'hostname/resource',
                 'route_identifier_name'  => 'id',
                 'entity_identifier_name' => 'id',
@@ -1147,7 +1147,7 @@ class HalTest extends TestCase
         self::assertEquals($expectedResult, $result);
     }
 
-    public function renderEntityMaxDepthProvider(): array
+    public static function renderEntityMaxDepthProvider(): array
     {
         return [
             /**
@@ -1159,8 +1159,8 @@ class HalTest extends TestCase
              * ]
              */
             [
-                $this->createNestedEntity(),
-                $this->createNestedMetadataMap(),
+                self::createNestedEntity(),
+                self::createNestedMetadataMap(),
                 null,
                 [
                     'class'   => CircularReferenceException::class,
@@ -1168,8 +1168,8 @@ class HalTest extends TestCase
                 ],
             ],
             [
-                $this->createNestedEntity(),
-                $this->createNestedMetadataMap(1),
+                self::createNestedEntity(),
+                self::createNestedMetadataMap(1),
                 [
                     'id'           => 'foo',
                     'name'         => 'Foo',
@@ -1201,8 +1201,8 @@ class HalTest extends TestCase
                 ],
             ],
             [
-                $this->createNestedEntity(),
-                $this->createNestedMetadataMap(2),
+                self::createNestedEntity(),
+                self::createNestedMetadataMap(2),
                 [
                     'id'           => 'foo',
                     'name'         => 'Foo',
@@ -1250,9 +1250,9 @@ class HalTest extends TestCase
 
     public function testSubsequentRenderEntityCalls(): void
     {
-        $entity       = $this->createNestedEntity();
-        $metadataMap1 = $this->createNestedMetadataMap(0);
-        $metadataMap2 = $this->createNestedMetadataMap(1);
+        $entity       = self::createNestedEntity();
+        $metadataMap1 = self::createNestedMetadataMap(0);
+        $metadataMap2 = self::createNestedMetadataMap(1);
 
         $metadataMap1->setHydratorManager(new Hydrator\HydratorPluginManager(new ServiceManager()));
         $metadataMap2->setHydratorManager(new Hydrator\HydratorPluginManager(new ServiceManager()));
@@ -1298,7 +1298,7 @@ class HalTest extends TestCase
     }
 
     /** @return array<array<mixed>> */
-    public function renderCollectionWithMaxDepthProvider(): array
+    public static function renderCollectionWithMaxDepthProvider(): array
     {
         return [
             [
@@ -1314,7 +1314,7 @@ class HalTest extends TestCase
                         $object3,
                     ]);
                 },
-                $this->createNestedCollectionMetadataMap(),
+                self::createNestedCollectionMetadataMap(),
                 null,
                 [
                     'class'   => CircularReferenceException::class,
@@ -1334,7 +1334,7 @@ class HalTest extends TestCase
                         $object3,
                     ]);
                 },
-                $this->createNestedCollectionMetadataMap(1),
+                self::createNestedCollectionMetadataMap(1),
                 [
                     '_links'      => [
                         'self' => [
@@ -1412,7 +1412,7 @@ class HalTest extends TestCase
 
                     return $collection;
                 },
-                $this->createNestedCollectionMetadataMap(),
+                self::createNestedCollectionMetadataMap(),
                 null,
                 [
                     'class'   => CircularReferenceException::class,
@@ -1432,7 +1432,7 @@ class HalTest extends TestCase
 
                     return $collection;
                 },
-                $this->createNestedCollectionMetadataMap(1),
+                self::createNestedCollectionMetadataMap(1),
                 [
                     '_links'      => [
                         'self' => [
@@ -1539,7 +1539,7 @@ class HalTest extends TestCase
         $object   = new TestAsset\Entity('foo', 'Foo');
         $metadata = new MetadataMap([
             TestAsset\Entity::class => [
-                'hydrator'        => $this->getObjectPropertyHydratorClass(),
+                'hydrator'        => self::getObjectPropertyHydratorClass(),
                 'route_name'      => 'hostname/resource',
                 'links'           => [],
                 'force_self_link' => false,
@@ -1563,7 +1563,7 @@ class HalTest extends TestCase
 
         $metadata = new MetadataMap([
             TestAsset\Entity::class => [
-                'hydrator'        => $this->getObjectPropertyHydratorClass(),
+                'hydrator'        => self::getObjectPropertyHydratorClass(),
                 'route_name'      => 'hostname/resource',
                 'links'           => [],
                 'force_self_link' => false,
@@ -1863,7 +1863,7 @@ class HalTest extends TestCase
     }
 
     /** @return array<int, array{0: int}> */
-    public function invalidPages(): array
+    public static function invalidPages(): array
     {
         return [
             '-1'   => [-1],
@@ -2226,7 +2226,7 @@ class HalTest extends TestCase
 
         $metadata = new MetadataMap([
             TestAsset\EmbeddedEntity::class => [
-                'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                'hydrator'               => self::getObjectPropertyHydratorClass(),
                 'route'                  => 'hostname/embedded',
                 'route_identifier_name'  => 'id',
                 'entity_identifier_name' => 'id',
@@ -2251,7 +2251,7 @@ class HalTest extends TestCase
         $this->plugin->renderEntity($entity);
     }
 
-    protected function createNestedEntity(): Entity
+    protected static function createNestedEntity(): Entity
     {
         $object              = new TestAsset\Entity('foo', 'Foo');
         $object->first_child = new TestAsset\EmbeddedEntityWithBackReference('bar', $object);
@@ -2259,7 +2259,7 @@ class HalTest extends TestCase
         $self                = new Link('self');
 
         $self->setRoute('hostname/resource', ['id' => 'foo']);
-        $entity->getLinks()->add($self);
+        $entity->getLinks()->idempotentAdd($self);
 
         return $entity;
     }
@@ -2267,19 +2267,19 @@ class HalTest extends TestCase
     /**
      * @param null|int $maxDepth
      */
-    protected function createNestedMetadataMap($maxDepth = null): MetadataMap
+    protected static function createNestedMetadataMap($maxDepth = null): MetadataMap
     {
         return new MetadataMap(
             [
                 TestAsset\Entity::class                          => [
-                    'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                    'hydrator'               => self::getObjectPropertyHydratorClass(),
                     'route_name'             => 'hostname/resource',
                     'route_identifier_name'  => 'id',
                     'entity_identifier_name' => 'id',
                     'max_depth'              => $maxDepth,
                 ],
                 TestAsset\EmbeddedEntityWithBackReference::class => [
-                    'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                    'hydrator'               => self::getObjectPropertyHydratorClass(),
                     'route'                  => 'hostname/embedded',
                     'route_identifier_name'  => 'id',
                     'entity_identifier_name' => 'id',
@@ -2291,7 +2291,7 @@ class HalTest extends TestCase
     /**
      * @param null|int $maxDepth
      */
-    protected function createNestedCollectionMetadataMap($maxDepth = null): MetadataMap
+    protected static function createNestedCollectionMetadataMap($maxDepth = null): MetadataMap
     {
         return new MetadataMap(
             [
@@ -2303,13 +2303,13 @@ class HalTest extends TestCase
                     'max_depth'         => $maxDepth,
                 ],
                 TestAsset\Entity::class                          => [
-                    'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                    'hydrator'               => self::getObjectPropertyHydratorClass(),
                     'route_name'             => 'hostname/resource',
                     'route_identifier_name'  => 'id',
                     'entity_identifier_name' => 'id',
                 ],
                 TestAsset\EmbeddedEntityWithBackReference::class => [
-                    'hydrator'               => $this->getObjectPropertyHydratorClass(),
+                    'hydrator'               => self::getObjectPropertyHydratorClass(),
                     'route'                  => 'hostname/embedded',
                     'route_identifier_name'  => 'id',
                     'entity_identifier_name' => 'id',

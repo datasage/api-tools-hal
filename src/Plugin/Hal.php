@@ -986,7 +986,6 @@ class Hal extends AbstractHelper implements
      * Removes the key from the parent representation, and creates a
      * representation for the key in the _embedded object.
      *
-     * @param array $parent
      * @param string $key
      * @param int $depth           depth of the current rendering recursion
      * @param int $maxDepth        maximum rendering depth for the current metadata
@@ -1012,7 +1011,6 @@ class Hal extends AbstractHelper implements
      * Removes the key from the parent representation, and creates a
      * representation for the key in the _embedded object.
      *
-     * @param array      $parent
      * @param string     $key
      * @param int        $depth        depth of the current rendering recursion
      * @param int        $maxDepth     maximum rendering depth for the current metadata
