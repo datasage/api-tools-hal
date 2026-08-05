@@ -38,7 +38,7 @@
         "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
         "container-interop/container-interop": "^1.2",
         "ext-json": "*",
-        "laminas-api-tools/api-tools-api-problem": "^1.8",
+        "laminas-api-tools/api-tools-api-problem": "^1.10",
         "laminas/laminas-eventmanager": "^3.15",
         "laminas/laminas-filter": "^2.42",
         "laminas/laminas-http": "^2.23",
