@@ -1638,7 +1638,6 @@ class HalTest extends TestCase
         $collection = new Collection([$object]);
         $collection->setEntityRoute('hostname/resource');
         $method = new ReflectionMethod($this->plugin, 'extractCollection');
-        $method->setAccessible(true);
         $result = $method->invoke($this->plugin, $collection);
         self::assertTrue(isset($result[0]['_links']['self']));
     }
@@ -1893,7 +1892,6 @@ class HalTest extends TestCase
         // Using reflection object so we can force a negative page number if desired
         $r = new ReflectionObject($collection);
         $p = $r->getProperty('page');
-        $p->setAccessible(true);
         $p->setValue($collection, $page);
 
         /** @var ApiProblem $result */

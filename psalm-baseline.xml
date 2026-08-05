@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
+<files psalm-version="6.16.1@f1f5de594dc76faf8784e02d3dc4716c91c6f6ac">
   <file src="src/Collection.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Collection]]></code>
+    </ClassMustBeFinal>
     <DocblockTypeContradiction>
       <code><![CDATA[! is_int($page)]]></code>
       <code><![CDATA[! is_int($size)]]></code>
@@ -9,6 +12,26 @@
       <code><![CDATA[is_array($params)]]></code>
       <code><![CDATA[is_array($params)]]></code>
     </DocblockTypeContradiction>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__get]]></code>
+      <code><![CDATA[getEntityIdentifierName]]></code>
+      <code><![CDATA[getResourceLinks]]></code>
+      <code><![CDATA[getResourceRoute]]></code>
+      <code><![CDATA[getResourceRouteOptions]]></code>
+      <code><![CDATA[getResourceRouteParams]]></code>
+      <code><![CDATA[setAttributes]]></code>
+      <code><![CDATA[setCollectionRouteOptions]]></code>
+      <code><![CDATA[setCollectionRouteParams]]></code>
+      <code><![CDATA[setPage]]></code>
+      <code><![CDATA[setPageSize]]></code>
+      <code><![CDATA[setResourceLinks]]></code>
+      <code><![CDATA[setResourceRoute]]></code>
+      <code><![CDATA[setResourceRouteOptions]]></code>
+      <code><![CDATA[setResourceRouteParams]]></code>
+    </PossiblyUnusedMethod>
+    <PossiblyUnusedParam>
+      <code><![CDATA[$name]]></code>
+    </PossiblyUnusedParam>
     <PropertyNotSetInConstructor>
       <code><![CDATA[$collectionRoute]]></code>
       <code><![CDATA[$entityLinks]]></code>
@@ -31,44 +54,140 @@
     <DocblockTypeContradiction>
       <code><![CDATA[! is_object($entity) && ! is_array($entity)]]></code>
     </DocblockTypeContradiction>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__get]]></code>
+    </PossiblyUnusedMethod>
     <PropertyNotSetInConstructor>
       <code><![CDATA[Entity]]></code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/EntityHydratorManager.php">
-    <MixedInferredReturnType>
-      <code><![CDATA[ExtractionInterface|false]]></code>
-    </MixedInferredReturnType>
+    <ClassMustBeFinal>
+      <code><![CDATA[EntityHydratorManager]]></code>
+    </ClassMustBeFinal>
     <MixedReturnStatement>
       <code><![CDATA[$this->hydratorMap[$classLower]]]></code>
     </MixedReturnStatement>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getHydratorManager]]></code>
+    </PossiblyUnusedMethod>
     <PropertyNotSetInConstructor>
       <code><![CDATA[$defaultHydrator]]></code>
     </PropertyNotSetInConstructor>
   </file>
+  <file src="src/Exception/CircularReferenceException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[CircularReferenceException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="src/Exception/DeprecatedMethodException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[DeprecatedMethodException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="src/Exception/DomainException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[DomainException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="src/Exception/InvalidCollectionException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[InvalidCollectionException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="src/Exception/InvalidEntityException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[InvalidEntityException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="src/Exception/InvalidResourceException.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[InvalidResourceException]]></code>
+    </ClassMustBeFinal>
+  </file>
+  <file src="src/Extractor/EntityExtractor.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[EntityExtractor]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function extract(object $object): array]]></code>
+    </MissingOverrideAttribute>
+  </file>
+  <file src="src/Extractor/LinkCollectionExtractor.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[LinkCollectionExtractor]]></code>
+    </ClassMustBeFinal>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function extract(LinkCollection $collection)]]></code>
+      <code><![CDATA[public function getLinkExtractor()]]></code>
+    </MissingOverrideAttribute>
+  </file>
   <file src="src/Extractor/LinkExtractor.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[LinkExtractor]]></code>
+    </ClassMustBeFinal>
     <DeprecatedMethod>
       <code><![CDATA[hasUrl]]></code>
     </DeprecatedMethod>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function extract(Link $link)]]></code>
+    </MissingOverrideAttribute>
     <PossiblyNullArgument>
       <code><![CDATA[$link->getRoute()]]></code>
     </PossiblyNullArgument>
   </file>
+  <file src="src/Factory/HalConfigFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[HalConfigFactory]]></code>
+    </ClassMustBeFinal>
+    <UnusedClass>
+      <code><![CDATA[HalConfigFactory]]></code>
+    </UnusedClass>
+  </file>
   <file src="src/Factory/HalControllerPluginFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[HalControllerPluginFactory]]></code>
+    </ClassMustBeFinal>
     <DeprecatedInterface>
       <code><![CDATA[HalControllerPluginFactory]]></code>
     </DeprecatedInterface>
     <DeprecatedMethod>
       <code><![CDATA[getServiceLocator]]></code>
     </DeprecatedMethod>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)]]></code>
+      <code><![CDATA[public function createService(ServiceLocatorInterface $serviceLocator)]]></code>
+    </MissingOverrideAttribute>
     <MixedAssignment>
       <code><![CDATA[$helpers]]></code>
     </MixedAssignment>
     <MixedMethodCall>
       <code><![CDATA[get]]></code>
     </MixedMethodCall>
+    <UnusedClass>
+      <code><![CDATA[HalControllerPluginFactory]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Factory/HalJsonRendererFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[HalJsonRendererFactory]]></code>
+    </ClassMustBeFinal>
+    <UnusedClass>
+      <code><![CDATA[HalJsonRendererFactory]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Factory/HalJsonStrategyFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[HalJsonStrategyFactory]]></code>
+    </ClassMustBeFinal>
+    <UnusedClass>
+      <code><![CDATA[HalJsonStrategyFactory]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Factory/HalViewHelperFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[HalViewHelperFactory]]></code>
+    </ClassMustBeFinal>
     <DeprecatedMethod>
       <code><![CDATA[getServiceLocator]]></code>
     </DeprecatedMethod>
@@ -81,18 +200,39 @@
     <MixedAssignment>
       <code><![CDATA[$hydratorServiceName]]></code>
     </MixedAssignment>
+    <UnusedClass>
+      <code><![CDATA[HalViewHelperFactory]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Factory/LinkCollectionExtractorFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[LinkCollectionExtractorFactory]]></code>
+    </ClassMustBeFinal>
     <MixedArgument>
       <code><![CDATA[$container->get(LinkExtractor::class)]]></code>
     </MixedArgument>
+    <UnusedClass>
+      <code><![CDATA[LinkCollectionExtractorFactory]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Factory/LinkExtractorFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[LinkExtractorFactory]]></code>
+    </ClassMustBeFinal>
     <MixedArgument>
       <code><![CDATA[$container->get(LinkUrlBuilder::class)]]></code>
     </MixedArgument>
+    <UnusedClass>
+      <code><![CDATA[LinkExtractorFactory]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Factory/LinkUrlBuilderFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[LinkUrlBuilderFactory]]></code>
+    </ClassMustBeFinal>
+    <DeprecatedClass>
+      <code><![CDATA[$serverUrlHelper->setUseProxy($halConfig['options']['use_proxy'])]]></code>
+    </DeprecatedClass>
     <MixedArgument>
       <code><![CDATA[$halConfig['options']['use_proxy']]]></code>
     </MixedArgument>
@@ -108,8 +248,14 @@
       <code><![CDATA[get]]></code>
       <code><![CDATA[get]]></code>
     </MixedMethodCall>
+    <UnusedClass>
+      <code><![CDATA[LinkUrlBuilderFactory]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Factory/MetadataMapFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[MetadataMapFactory]]></code>
+    </ClassMustBeFinal>
     <MixedArgument>
       <code><![CDATA[$hydrators]]></code>
       <code><![CDATA[$map]]></code>
@@ -119,8 +265,14 @@
       <code><![CDATA[$hydrators]]></code>
       <code><![CDATA[$map]]></code>
     </MixedAssignment>
+    <UnusedClass>
+      <code><![CDATA[MetadataMapFactory]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Factory/RendererOptionsFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[RendererOptionsFactory]]></code>
+    </ClassMustBeFinal>
     <MixedArgumentTypeCoercion>
       <code><![CDATA[$rendererConfig]]></code>
     </MixedArgumentTypeCoercion>
@@ -129,8 +281,14 @@
       <code><![CDATA[$rendererConfig]]></code>
       <code><![CDATA[$rendererConfig['render_embedded_entities']]]></code>
     </MixedAssignment>
+    <UnusedClass>
+      <code><![CDATA[RendererOptionsFactory]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Link/Link.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Link]]></code>
+    </ClassMustBeFinal>
     <DeprecatedMethod>
       <code><![CDATA[hasUrl]]></code>
     </DeprecatedMethod>
@@ -147,6 +305,16 @@
             ), (int) $e->getCode(), $e);
         }]]></code>
     </InvalidCatch>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getAttributes(): array]]></code>
+      <code><![CDATA[public function getHref(): string]]></code>
+      <code><![CDATA[public function getRels(): array]]></code>
+      <code><![CDATA[public function isTemplated(): bool]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getProps]]></code>
+      <code><![CDATA[getUrl]]></code>
+    </PossiblyUnusedMethod>
     <PropertyNotSetInConstructor>
       <code><![CDATA[$route]]></code>
     </PropertyNotSetInConstructor>
@@ -165,17 +333,47 @@
     </UnsafeInstantiation>
   </file>
   <file src="src/Link/LinkCollection.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[LinkCollection]]></code>
+    </ClassMustBeFinal>
     <DeprecatedMethod>
       <code><![CDATA[getRelation]]></code>
     </DeprecatedMethod>
+    <MissingOverrideAttribute>
+      <code><![CDATA[#[ReturnTypeWillChange]]]></code>
+      <code><![CDATA[#[ReturnTypeWillChange]]]></code>
+    </MissingOverrideAttribute>
     <MissingTemplateParam>
       <code><![CDATA[IteratorAggregate]]></code>
     </MissingTemplateParam>
     <MixedAssignment>
       <code><![CDATA[$relationLinks]]></code>
     </MixedAssignment>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[remove]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Link/LinkCollectionAwareInterface.php">
+    <PossiblyUnusedReturnValue>
+      <code><![CDATA[mixed]]></code>
+    </PossiblyUnusedReturnValue>
+  </file>
+  <file src="src/Link/LinkUrlBuilder.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[LinkUrlBuilder]]></code>
+    </ClassMustBeFinal>
+    <DeprecatedClass>
+      <code><![CDATA[ServerUrl]]></code>
+      <code><![CDATA[ServerUrl]]></code>
+      <code><![CDATA[Url]]></code>
+      <code><![CDATA[Url]]></code>
+    </DeprecatedClass>
   </file>
   <file src="src/Link/PaginationInjector.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[PaginationInjector]]></code>
+    </ClassMustBeFinal>
     <DeprecatedMethod>
       <code><![CDATA[add]]></code>
       <code><![CDATA[add]]></code>
@@ -183,19 +381,31 @@
       <code><![CDATA[add]]></code>
       <code><![CDATA[add]]></code>
     </DeprecatedMethod>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function injectPaginationLinks(Collection $halCollection)]]></code>
+    </MissingOverrideAttribute>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[$next]]></code>
     </RiskyTruthyFalsyComparison>
   </file>
   <file src="src/Link/SelfLinkInjector.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[SelfLinkInjector]]></code>
+    </ClassMustBeFinal>
     <DeprecatedMethod>
       <code><![CDATA[add]]></code>
     </DeprecatedMethod>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function injectSelfLink(LinkCollectionAwareInterface $resource, $route, $routeIdentifier = 'id')]]></code>
+    </MissingOverrideAttribute>
     <RedundantCastGivenDocblockType>
       <code><![CDATA[(string) $route]]></code>
     </RedundantCastGivenDocblockType>
   </file>
   <file src="src/Metadata/Metadata.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Metadata]]></code>
+    </ClassMustBeFinal>
     <DocblockTypeContradiction>
       <code><![CDATA[! isset($this->entityIdentifierName) || ! $this->entityIdentifierName]]></code>
       <code><![CDATA[! isset($this->routeIdentifierName) || ! $this->routeIdentifierName]]></code>
@@ -215,6 +425,22 @@
       <code><![CDATA[$this->getRoute()]]></code>
       <code><![CDATA[$this->getUrl()]]></code>
     </PossiblyNullArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[getClass]]></code>
+      <code><![CDATA[getResourceRoute]]></code>
+      <code><![CDATA[hasHydrator]]></code>
+      <code><![CDATA[setCollectionName]]></code>
+      <code><![CDATA[setForceSelfLink]]></code>
+      <code><![CDATA[setHydrator]]></code>
+      <code><![CDATA[setIsCollection]]></code>
+      <code><![CDATA[setLinks]]></code>
+      <code><![CDATA[setMaxDepth]]></code>
+      <code><![CDATA[setResourceRoute]]></code>
+      <code><![CDATA[setRoute]]></code>
+      <code><![CDATA[setRouteOptions]]></code>
+      <code><![CDATA[setRouteParams]]></code>
+      <code><![CDATA[setUrl]]></code>
+    </PossiblyUnusedMethod>
     <PropertyNotSetInConstructor>
       <code><![CDATA[$entityIdentifierName]]></code>
       <code><![CDATA[$entityRoute]]></code>
@@ -244,16 +470,42 @@
     </TooManyArguments>
   </file>
   <file src="src/Metadata/MetadataMap.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[MetadataMap]]></code>
+    </ClassMustBeFinal>
+    <PossiblyFalseArgument>
+      <code><![CDATA[get_parent_class($className)]]></code>
+      <code><![CDATA[get_parent_class($className)]]></code>
+    </PossiblyFalseArgument>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[empty($map)]]></code>
     </RiskyTruthyFalsyComparison>
+  </file>
+  <file src="src/Module.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Module]]></code>
+    </ClassMustBeFinal>
+    <DeprecatedClass>
+      <code><![CDATA[$view]]></code>
+    </DeprecatedClass>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getConfig(): array]]></code>
+      <code><![CDATA[public function onBootstrap(EventInterface $e): void]]></code>
+    </MissingOverrideAttribute>
+    <UnusedClass>
+      <code><![CDATA[Module]]></code>
+    </UnusedClass>
   </file>
   <file src="src/Plugin/Hal.php">
     <ArgumentTypeCoercion>
       <code><![CDATA[$collection]]></code>
       <code><![CDATA[$collection]]></code>
     </ArgumentTypeCoercion>
+    <ClassMustBeFinal>
+      <code><![CDATA[Hal]]></code>
+    </ClassMustBeFinal>
     <DeprecatedClass>
+      <code><![CDATA[AbstractHelper]]></code>
       <code><![CDATA[Resource]]></code>
     </DeprecatedClass>
     <DeprecatedMethod>
@@ -262,6 +514,11 @@
     <ImplementedReturnTypeMismatch>
       <code><![CDATA[self]]></code>
     </ImplementedReturnTypeMismatch>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function getController()]]></code>
+      <code><![CDATA[public function setController(DispatchableInterface $controller)]]></code>
+      <code><![CDATA[public function setEventManager(EventManagerInterface $events)]]></code>
+    </MissingOverrideAttribute>
     <MixedArrayAssignment>
       <code><![CDATA[$parent['_embedded'][$key]]]></code>
       <code><![CDATA[$parent['_embedded'][$key]]]></code>
@@ -272,6 +529,33 @@
     <PossiblyNullArgument>
       <code><![CDATA[$route]]></code>
     </PossiblyNullArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[convertEntityToArray]]></code>
+      <code><![CDATA[createCollection]]></code>
+      <code><![CDATA[createCollectionFromMetadata]]></code>
+      <code><![CDATA[createLink]]></code>
+      <code><![CDATA[createResource]]></code>
+      <code><![CDATA[createResourceFromMetadata]]></code>
+      <code><![CDATA[fromLink]]></code>
+      <code><![CDATA[getHydratorForResource]]></code>
+      <code><![CDATA[getHydratorManager]]></code>
+      <code><![CDATA[getLinkCollectionExtractor]]></code>
+      <code><![CDATA[getRenderEmbeddedResources]]></code>
+      <code><![CDATA[marshalLinkFromMetadata]]></code>
+      <code><![CDATA[marshalMetadataLinks]]></code>
+      <code><![CDATA[renderResource]]></code>
+      <code><![CDATA[resetEntityHashStack]]></code>
+      <code><![CDATA[setEntityExtractor]]></code>
+      <code><![CDATA[setEntityHydratorManager]]></code>
+      <code><![CDATA[setRenderEmbeddedResources]]></code>
+      <code><![CDATA[setResourceFactory]]></code>
+      <code><![CDATA[setServerUrlHelper]]></code>
+      <code><![CDATA[setUrlHelper]]></code>
+    </PossiblyUnusedMethod>
+    <PossiblyUnusedParam>
+      <code><![CDATA[$helper]]></code>
+      <code><![CDATA[$helper]]></code>
+    </PossiblyUnusedParam>
     <PropertyNotSetInConstructor>
       <code><![CDATA[$controller]]></code>
       <code><![CDATA[$entityExtractor]]></code>
@@ -295,9 +579,18 @@
     </UndefinedInterfaceMethod>
   </file>
   <file src="src/RendererOptions.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[RendererOptions]]></code>
+    </ClassMustBeFinal>
     <MissingTemplateParam>
       <code><![CDATA[RendererOptions]]></code>
     </MissingTemplateParam>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[setDefaultHydrator]]></code>
+      <code><![CDATA[setHydrators]]></code>
+      <code><![CDATA[setRenderEmbeddedCollections]]></code>
+      <code><![CDATA[setRenderEmbeddedEntities]]></code>
+    </PossiblyUnusedMethod>
     <PropertyNotSetInConstructor>
       <code><![CDATA[$defaultHydrator]]></code>
     </PropertyNotSetInConstructor>
@@ -307,11 +600,20 @@
     </RedundantCastGivenDocblockType>
   </file>
   <file src="src/Resource.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[Resource]]></code>
+    </ClassMustBeFinal>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
     <PropertyNotSetInConstructor>
       <code><![CDATA[Resource]]></code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/ResourceFactory.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[ResourceFactory]]></code>
+    </ClassMustBeFinal>
     <DeprecatedMethod>
       <code><![CDATA[add]]></code>
       <code><![CDATA[add]]></code>
@@ -322,7 +624,6 @@
     </MixedAssignment>
     <PossiblyInvalidArgument>
       <code><![CDATA[$object]]></code>
-      <code><![CDATA[$object]]></code>
       <code><![CDATA[$param]]></code>
     </PossiblyInvalidArgument>
     <PossiblyNullArgument>
@@ -331,19 +632,104 @@
       <code><![CDATA[$metadata->getRoute()]]></code>
       <code><![CDATA[$metadata->getUrl()]]></code>
     </PossiblyNullArgument>
+    <PossiblyUnusedProperty>
+      <code><![CDATA[$entityHydratorManager]]></code>
+    </PossiblyUnusedProperty>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[$routeIdentifierName]]></code>
     </RiskyTruthyFalsyComparison>
+    <TooManyArguments>
+      <code><![CDATA[$callback]]></code>
+    </TooManyArguments>
+  </file>
+  <file src="src/View/HalJsonModel.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[HalJsonModel]]></code>
+    </ClassMustBeFinal>
+    <DeprecatedClass>
+      <code><![CDATA[JsonModel]]></code>
+    </DeprecatedClass>
+    <InvalidExtendClass>
+      <code><![CDATA[JsonModel]]></code>
+    </InvalidExtendClass>
+    <MethodSignatureMismatch>
+      <code><![CDATA[public function setTerminal($terminate = true)]]></code>
+    </MethodSignatureMismatch>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function setTerminal($terminate = true)]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[isResource]]></code>
+      <code><![CDATA[setPayload]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="src/View/HalJsonRenderer.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[HalJsonRenderer]]></code>
+    </ClassMustBeFinal>
+    <DeprecatedClass>
+      <code><![CDATA[$event->setModel($model)]]></code>
+      <code><![CDATA[JsonRenderer]]></code>
+      <code><![CDATA[ViewEvent]]></code>
+      <code><![CDATA[ViewEvent|null]]></code>
+      <code><![CDATA[ViewEvent|null]]></code>
+      <code><![CDATA[parent::render($nameOrModel, $values)]]></code>
+      <code><![CDATA[parent::render($nameOrModel, $values)]]></code>
+      <code><![CDATA[parent::render($payload)]]></code>
+      <code><![CDATA[parent::render($payload)]]></code>
+    </DeprecatedClass>
+    <DeprecatedInterface>
+      <code><![CDATA[HalJsonRenderer]]></code>
+    </DeprecatedInterface>
+    <InvalidArgument>
+      <code><![CDATA[$problem]]></code>
+    </InvalidArgument>
+    <InvalidExtendClass>
+      <code><![CDATA[JsonRenderer]]></code>
+    </InvalidExtendClass>
+    <MethodSignatureMismatch>
+      <code><![CDATA[public function render($nameOrModel, $values = null)]]></code>
+    </MethodSignatureMismatch>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function render($nameOrModel, $values = null)]]></code>
+    </MissingOverrideAttribute>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[setViewEvent]]></code>
+    </PossiblyUnusedMethod>
     <PropertyNotSetInConstructor>
       <code><![CDATA[HalJsonRenderer]]></code>
     </PropertyNotSetInConstructor>
   </file>
   <file src="src/View/HalJsonStrategy.php">
+    <ClassMustBeFinal>
+      <code><![CDATA[HalJsonStrategy]]></code>
+    </ClassMustBeFinal>
+    <ConstructorSignatureMismatch>
+      <code><![CDATA[$renderer]]></code>
+    </ConstructorSignatureMismatch>
+    <DeprecatedClass>
+      <code><![CDATA[JsonStrategy]]></code>
+      <code><![CDATA[ViewEvent]]></code>
+      <code><![CDATA[ViewEvent]]></code>
+    </DeprecatedClass>
+    <InvalidExtendClass>
+      <code><![CDATA[JsonStrategy]]></code>
+    </InvalidExtendClass>
     <LessSpecificReturnStatement>
       <code><![CDATA[$this->renderer]]></code>
     </LessSpecificReturnStatement>
+    <MethodSignatureMismatch>
+      <code><![CDATA[public function __construct(HalJsonRenderer $renderer)]]></code>
+      <code><![CDATA[public function injectResponse(ViewEvent $e)]]></code>
+      <code><![CDATA[public function selectRenderer(ViewEvent $e)]]></code>
+    </MethodSignatureMismatch>
+    <MissingOverrideAttribute>
+      <code><![CDATA[public function injectResponse(ViewEvent $e)]]></code>
+      <code><![CDATA[public function selectRenderer(ViewEvent $e)]]></code>
+    </MissingOverrideAttribute>
+    <MoreSpecificImplementedParamType>
+      <code><![CDATA[$renderer]]></code>
+    </MoreSpecificImplementedParamType>
     <MoreSpecificReturnType>
       <code><![CDATA[null|HalJsonRenderer]]></code>
     </MoreSpecificReturnType>
