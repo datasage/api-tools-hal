@@ -15,7 +15,7 @@ class HalJsonRendererFactoryTest extends TestCase
 {
     public function testInstantiatesHalJsonRenderer(): void
     {
-        $viewHelperManager = $this->createMock(HelperPluginManager::class);
+        $viewHelperManager = $this->createStub(HelperPluginManager::class);
 
         $services = new ServiceManager();
         $services->setService('ViewHelperManager', $viewHelperManager);

@@ -13,8 +13,8 @@ use Laminas\ApiTools\Hal\RendererOptions;
 use Laminas\EventManager\EventManagerInterface;
 use Laminas\EventManager\SharedEventManagerInterface;
 use Laminas\Hydrator\HydratorPluginManager;
-use Laminas\ServiceManager\AbstractPluginManager;
 use Laminas\ServiceManager\ServiceManager;
+use Laminas\View\HelperPluginManager;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
@@ -24,7 +24,7 @@ class HalViewHelperFactoryTest extends TestCase
 {
     use ProphecyTrait;
 
-    /** @var AbstractPluginManager */
+    /** @var HelperPluginManager */
     private $pluginManager;
     /** @var ServiceManager */
     private $services;
@@ -49,15 +49,15 @@ class HalViewHelperFactoryTest extends TestCase
         $metadataMap->getHydratorManager()->willReturn(new HydratorPluginManager($services))->shouldBeCalledTimes(1);
         $services->setService('Laminas\ApiTools\Hal\MetadataMap', $metadataMap->reveal());
 
-        $linkUrlBuilder = $this->createMock(Link\LinkUrlBuilder::class);
+        $linkUrlBuilder = $this->createStub(Link\LinkUrlBuilder::class);
         $services->setService(Link\LinkUrlBuilder::class, $linkUrlBuilder);
 
-        $linkCollectionExtractor = $this->createMock(LinkCollectionExtractor::class);
+        $linkCollectionExtractor = $this->createStub(LinkCollectionExtractor::class);
         $services->setService(LinkCollectionExtractor::class, $linkCollectionExtractor);
 
-        $this->pluginManager = $this->getMockBuilder(AbstractPluginManager::class)
-            ->setConstructorArgs([$services])
-            ->getMock();
+        // HalViewHelperFactory never fetches ViewHelperManager, and no test asserts on
+        // this instance, so a real manager stands in for the double.
+        $this->pluginManager = new HelperPluginManager($services);
 
         $services->setService('ViewHelperManager', $this->pluginManager);
 
@@ -68,10 +68,8 @@ class HalViewHelperFactoryTest extends TestCase
     {
         $this->setupPluginManager();
 
-        $sharedEventManager = $this->getMockBuilder(SharedEventManagerInterface::class)
-            ->getMock();
-        $eventManagerMock   = $this->getMockBuilder(EventManagerInterface::class)
-            ->getMock();
+        $sharedEventManager = $this->createStub(SharedEventManagerInterface::class);
+        $eventManagerMock   = $this->createStub(EventManagerInterface::class);
         $eventManagerMock->method('getSharedManager')->willReturn($sharedEventManager);
 
         $this->services->setService('EventManager', $eventManagerMock);
