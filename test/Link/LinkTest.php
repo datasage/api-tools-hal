@@ -6,6 +6,7 @@ namespace LaminasTest\ApiTools\Hal\Link;
 
 use Laminas\ApiTools\ApiProblem\Exception\DomainException;
 use Laminas\ApiTools\Hal\Link\Link;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 class LinkTest extends TestCase
@@ -138,9 +139,7 @@ class LinkTest extends TestCase
         self::assertTrue($link->isComplete());
     }
 
-    /**
-     * @group 79
-     */
+    #[Group('79')]
     public function testFactoryCanGenerateLinkWithUrl(): void
     {
         $rel  = 'describedby';
@@ -154,9 +153,7 @@ class LinkTest extends TestCase
         self::assertEquals($url, $link->getUrl());
     }
 
-    /**
-     * @group 79
-     */
+    #[Group('79')]
     public function testFactoryCanGenerateLinkWithRouteInformation(): void
     {
         $rel     = 'describedby';

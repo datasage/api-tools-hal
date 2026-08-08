@@ -37,6 +37,9 @@ use Laminas\Uri\Http;
 use Laminas\View\Helper\ServerUrl as ServerUrlHelper;
 use Laminas\View\Helper\Url as UrlHelper;
 use LaminasTest\ApiTools\Hal\TestAsset as HalTestAsset;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use ReflectionMethod;
@@ -671,9 +674,7 @@ class HalTest extends TestCase
         self::assertCount(2, $rendered['_links']['arrayLink']);
     }
 
-    /**
-     * @group 71
-     */
+    #[Group('71')]
     public function testRenderingEmbeddedEntityEmbedsEntity(): void
     {
         $embedded = new Entity((object) ['id' => 'foo', 'name' => 'foo'], 'foo');
@@ -696,9 +697,7 @@ class HalTest extends TestCase
         $this->assertRelationalLinkContains('/contacts/foo', 'self', $contact);
     }
 
-    /**
-     * @group 71
-     */
+    #[Group('71')]
     public function testRenderingCollectionRendersAllLinksInEmbeddedEntities(): void
     {
         $embedded = new Entity((object) ['id' => 'foo', 'name' => 'foo'], 'foo');
@@ -766,9 +765,7 @@ class HalTest extends TestCase
         self::assertArrayHasKey('name', $testResource);
     }
 
-    /**
-     * @group 47
-     */
+    #[Group('47')]
     public function testRetainsLinksInjectedViaMetadataDuringCreateEntity(): void
     {
         $object = new TestAsset\Entity('foo', 'Foo');
@@ -810,9 +807,7 @@ class HalTest extends TestCase
         self::assertEquals('resource/children', $children?->getRoute());
     }
 
-    /**
-     * @group 79
-     */
+    #[Group('79')]
     public function testRenderEntityTriggersEvents(): void
     {
         $entity = new Entity(
@@ -835,9 +830,7 @@ class HalTest extends TestCase
         self::assertStringContainsString('/users/matthew', $rendered['_links']['self']['href']);
     }
 
-    /**
-     * @group 79
-     */
+    #[Group('79')]
     public function testRenderCollectionTriggersEvents(): void
     {
         $collection = new Collection(
@@ -1005,9 +998,9 @@ class HalTest extends TestCase
     }
 
     /**
-     * @group 14
      * @return ApiProblem|array
      */
+    #[Group('14')]
     public function testRenderingPaginatorCollectionRendersPaginationAttributes()
     {
         $set = [];
@@ -1046,10 +1039,10 @@ class HalTest extends TestCase
     }
 
     /**
-     * @group 50
-     * @depends testRenderingPaginatorCollectionRendersPaginationAttributes
      * @param array $rendered
      */
+    #[Group('50')]
+    #[Depends('testRenderingPaginatorCollectionRendersPaginationAttributes')]
     public function testRenderingPaginatorCollectionRendersFirstLinkWithoutPageInQueryString($rendered): void
     {
         $links = $rendered['_links'];
@@ -1059,9 +1052,7 @@ class HalTest extends TestCase
         self::assertStringNotContainsString('page=1', $first['href']);
     }
 
-    /**
-     * @group 14
-     */
+    #[Group('14')]
     public function testRenderingNonPaginatorCollectionRendersCountOfTotalItems(): void
     {
         $embedded = new Entity((object) ['id' => 'foo', 'name' => 'foo'], 'foo');
@@ -1082,9 +1073,7 @@ class HalTest extends TestCase
         self::assertEquals($expectedKeys, array_keys($rendered));
     }
 
-    /**
-     * @group 33
-     */
+    #[Group('33')]
     public function testCreateEntityShouldNotSerializeEntity(): void
     {
         $metadata = new MetadataMap([
@@ -1106,9 +1095,7 @@ class HalTest extends TestCase
         self::assertSame($foo, $entity->getEntity());
     }
 
-    /**
-     * @group 39
-     */
+    #[Group('39')]
     public function testCreateEntityPassesNullValueForIdentifierIfNotDiscovered(): void
     {
         $entity = ['foo' => 'bar'];
@@ -1125,12 +1112,12 @@ class HalTest extends TestCase
     }
 
     /**
-     * @dataProvider renderEntityMaxDepthProvider
      * @param Entity      $entity
      * @param MetadataMap $metadataMap
      * @param array       $expectedResult
      * @param array       $exception
      */
+    #[DataProvider('renderEntityMaxDepthProvider')]
     public function testRenderEntityMaxDepth($entity, $metadataMap, $expectedResult, $exception = null): void
     {
         $this->plugin->setMetadataMap($metadataMap);
@@ -1267,12 +1254,12 @@ class HalTest extends TestCase
     }
 
     /**
-     * @dataProvider renderCollectionWithMaxDepthProvider
      * @param Collection  $collection
      * @param MetadataMap $metadataMap
      * @param array|null  $expectedResult
      * @param array|null  $exception
      */
+    #[DataProvider('renderCollectionWithMaxDepthProvider')]
     public function testRenderCollectionWithMaxDepth(
         $collection,
         $metadataMap,
@@ -1488,9 +1475,7 @@ class HalTest extends TestCase
         ];
     }
 
-    /**
-     * @group 102
-     */
+    #[Group('102')]
     public function testRenderingEntityTwiceMustNotDuplicateLinkProperties(): void
     {
         $link = new Link('resource');
@@ -1510,9 +1495,7 @@ class HalTest extends TestCase
         self::assertEquals($rendered1, $rendered2);
     }
 
-    /**
-     * @group 102
-     */
+    #[Group('102')]
     public function testRenderingEntityTwiceMustNotDuplicateLinkCollectionProperties(): void
     {
         $link = new Link('resource');
@@ -1871,9 +1854,9 @@ class HalTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidPages
      * @param int $page
      */
+    #[DataProvider('invalidPages')]
     public function testRenderingPaginatedCollectionCanReturnApiProblemIfPageIsTooHighOrTooLow($page): void
     {
         $prototype = ['foo' => 'bar'];
@@ -2169,9 +2152,7 @@ class HalTest extends TestCase
         }
     }
 
-    /**
-     * @group 100
-     */
+    #[Group('100')]
     public function testRenderEntityPostEventIsTriggered(): void
     {
         $entity    = ['id' => 1, 'foo' => 'bar'];
@@ -2186,9 +2167,7 @@ class HalTest extends TestCase
         self::assertTrue($triggered);
     }
 
-    /**
-     * @group 125
-     */
+    #[Group('125')]
     public function testSetUrlHelperRaisesExceptionIndicatingDeprecation(): void
     {
         $this->expectException(Exception\DeprecatedMethodException::class);
@@ -2198,9 +2177,7 @@ class HalTest extends TestCase
         });
     }
 
-    /**
-     * @group 125
-     */
+    #[Group('125')]
     public function testSetServerUrlHelperRaisesExceptionIndicatingDeprecation(): void
     {
         $this->expectException(Exception\DeprecatedMethodException::class);
@@ -2210,9 +2187,7 @@ class HalTest extends TestCase
         });
     }
 
-    /**
-     * @group 101
-     */
+    #[Group('101')]
     public function testNotExistingRouteInMetadataLinks(): void
     {
         $object              = new TestAsset\Entity('foo', 'Foo');

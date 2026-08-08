@@ -9,6 +9,7 @@ use Laminas\Http\Response;
 use Laminas\View\Model\ModelInterface;
 use Laminas\View\Strategy\JsonStrategy;
 use Laminas\View\ViewEvent;
+use Override;
 
 use function is_string;
 use function method_exists;
@@ -37,6 +38,7 @@ class HalJsonStrategy extends JsonStrategy
      *
      * @return null|HalJsonRenderer
      */
+    #[Override]
     public function selectRenderer(ViewEvent $e)
     {
         $model = $e->getModel();
@@ -60,6 +62,7 @@ class HalJsonStrategy extends JsonStrategy
      * Injects the response with the rendered content, and sets the content
      * type based on the detection that occurred during renderer selection.
      */
+    #[Override]
     public function injectResponse(ViewEvent $e)
     {
         $renderer = $e->getRenderer();

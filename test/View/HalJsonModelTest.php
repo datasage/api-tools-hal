@@ -8,6 +8,8 @@ use Exception;
 use Laminas\ApiTools\Hal\Collection;
 use Laminas\ApiTools\Hal\Entity;
 use Laminas\ApiTools\Hal\View\HalJsonModel;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Depends;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -64,9 +66,9 @@ class HalJsonModelTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidCollectionPayloads
      * @param mixed $payload
      */
+    #[DataProvider('invalidCollectionPayloads')]
     public function testIsCollectionReturnsFalseForInvalidValues($payload): void
     {
         $this->model->setPayload($payload);
@@ -93,9 +95,9 @@ class HalJsonModelTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidEntityPayloads
      * @param mixed $payload
      */
+    #[DataProvider('invalidEntityPayloads')]
     public function testIsEntityReturnsFalseForInvalidValues($payload): void
     {
         $this->model->setPayload($payload);
@@ -114,9 +116,7 @@ class HalJsonModelTest extends TestCase
         self::assertTrue($this->model->terminate());
     }
 
-    /**
-     * @depends testIsTerminalByDefault
-     */
+    #[Depends('testIsTerminalByDefault')]
     public function testTerminalFlagIsNotMutable(): void
     {
         $this->model->setTerminal(false);

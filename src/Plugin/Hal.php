@@ -38,6 +38,7 @@ use Laminas\Paginator\Paginator;
 use Laminas\ServiceManager\ServiceManager;
 use Laminas\Stdlib\DispatchableInterface;
 use Laminas\View\Helper\AbstractHelper;
+use Override;
 use Traversable;
 
 use function array_key_exists;
@@ -138,6 +139,7 @@ class Hal extends AbstractHelper implements
         }
     }
 
+    #[Override]
     public function setController(DispatchableInterface $controller)
     {
         $this->controller = $controller;
@@ -146,6 +148,7 @@ class Hal extends AbstractHelper implements
     /**
      * @return DispatchableInterface
      */
+    #[Override]
     public function getController()
     {
         return $this->controller;
@@ -157,6 +160,7 @@ class Hal extends AbstractHelper implements
      * @return self
      * @psalm-suppress ParamNameMismatch
      */
+    #[Override]
     public function setEventManager(EventManagerInterface $events)
     {
         $events->setIdentifiers([

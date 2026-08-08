@@ -12,15 +12,18 @@ use Laminas\ModuleManager\Feature\ConfigProviderInterface;
 use Laminas\Mvc\ApplicationInterface;
 use Laminas\Mvc\MvcEvent;
 use Laminas\View\View;
+use Override;
 
 class Module implements BootstrapListenerInterface, ConfigProviderInterface
 {
+    #[Override]
     public function getConfig(): array
     {
         /** @psalm-var array */
         return include __DIR__ . '/../config/module.config.php';
     }
 
+    #[Override]
     public function onBootstrap(EventInterface $e): void
     {
         /** @var ApplicationInterface $application */

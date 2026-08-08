@@ -8,6 +8,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use Laminas\ApiTools\ApiProblem\Exception;
+use Override;
 use Psr\Link\LinkInterface;
 use ReturnTypeWillChange;
 
@@ -36,6 +37,7 @@ class LinkCollection implements Countable, IteratorAggregate
      *
      * @return int
      */
+    #[Override]
     #[ReturnTypeWillChange]
     public function count()
     {
@@ -47,6 +49,7 @@ class LinkCollection implements Countable, IteratorAggregate
      *
      * @return ArrayIterator
      */
+    #[Override]
     #[ReturnTypeWillChange]
     public function getIterator()
     {

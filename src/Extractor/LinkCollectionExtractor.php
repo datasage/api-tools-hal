@@ -7,6 +7,7 @@ namespace Laminas\ApiTools\Hal\Extractor;
 use Laminas\ApiTools\ApiProblem\Exception\DomainException;
 use Laminas\ApiTools\Hal\Link\Link;
 use Laminas\ApiTools\Hal\Link\LinkCollection;
+use Override;
 
 use function is_array;
 use function sprintf;
@@ -24,6 +25,7 @@ class LinkCollectionExtractor implements LinkCollectionExtractorInterface
     /**
      * @return LinkExtractorInterface
      */
+    #[Override]
     public function getLinkExtractor()
     {
         return $this->linkExtractor;
@@ -40,6 +42,7 @@ class LinkCollectionExtractor implements LinkCollectionExtractorInterface
     /**
      * @inheritDoc
      */
+    #[Override]
     public function extract(LinkCollection $collection)
     {
         $links = [];

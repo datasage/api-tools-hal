@@ -8,6 +8,7 @@ use Laminas\ApiTools\Hal\Collection;
 use Laminas\ApiTools\Hal\Exception\InvalidCollectionException;
 use Laminas\ApiTools\Hal\Link\Link;
 use Laminas\ApiTools\Hal\Link\LinkCollection;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -29,9 +30,9 @@ class CollectionTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidCollections
      * @param mixed $collection
      */
+    #[DataProvider('invalidCollections')]
     public function testConstructorRaisesExceptionForNonTraversableCollection($collection): void
     {
         $this->expectException(InvalidCollectionException::class);

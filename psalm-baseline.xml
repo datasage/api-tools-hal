@@ -109,18 +109,11 @@
     <ClassMustBeFinal>
       <code><![CDATA[EntityExtractor]]></code>
     </ClassMustBeFinal>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function extract(object $object): array]]></code>
-    </MissingOverrideAttribute>
   </file>
   <file src="src/Extractor/LinkCollectionExtractor.php">
     <ClassMustBeFinal>
       <code><![CDATA[LinkCollectionExtractor]]></code>
     </ClassMustBeFinal>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function extract(LinkCollection $collection)]]></code>
-      <code><![CDATA[public function getLinkExtractor()]]></code>
-    </MissingOverrideAttribute>
   </file>
   <file src="src/Extractor/LinkExtractor.php">
     <ClassMustBeFinal>
@@ -129,9 +122,6 @@
     <DeprecatedMethod>
       <code><![CDATA[hasUrl]]></code>
     </DeprecatedMethod>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function extract(Link $link)]]></code>
-    </MissingOverrideAttribute>
     <PossiblyNullArgument>
       <code><![CDATA[$link->getRoute()]]></code>
     </PossiblyNullArgument>
@@ -154,10 +144,6 @@
     <DeprecatedMethod>
       <code><![CDATA[getServiceLocator]]></code>
     </DeprecatedMethod>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)]]></code>
-      <code><![CDATA[public function createService(ServiceLocatorInterface $serviceLocator)]]></code>
-    </MissingOverrideAttribute>
     <MixedAssignment>
       <code><![CDATA[$helpers]]></code>
     </MixedAssignment>
@@ -305,12 +291,6 @@
             ), (int) $e->getCode(), $e);
         }]]></code>
     </InvalidCatch>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function getAttributes(): array]]></code>
-      <code><![CDATA[public function getHref(): string]]></code>
-      <code><![CDATA[public function getRels(): array]]></code>
-      <code><![CDATA[public function isTemplated(): bool]]></code>
-    </MissingOverrideAttribute>
     <PossiblyUnusedMethod>
       <code><![CDATA[getProps]]></code>
       <code><![CDATA[getUrl]]></code>
@@ -339,10 +319,6 @@
     <DeprecatedMethod>
       <code><![CDATA[getRelation]]></code>
     </DeprecatedMethod>
-    <MissingOverrideAttribute>
-      <code><![CDATA[#[ReturnTypeWillChange]]]></code>
-      <code><![CDATA[#[ReturnTypeWillChange]]]></code>
-    </MissingOverrideAttribute>
     <MissingTemplateParam>
       <code><![CDATA[IteratorAggregate]]></code>
     </MissingTemplateParam>
@@ -381,9 +357,6 @@
       <code><![CDATA[add]]></code>
       <code><![CDATA[add]]></code>
     </DeprecatedMethod>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function injectPaginationLinks(Collection $halCollection)]]></code>
-    </MissingOverrideAttribute>
     <RiskyTruthyFalsyComparison>
       <code><![CDATA[$next]]></code>
     </RiskyTruthyFalsyComparison>
@@ -395,9 +368,6 @@
     <DeprecatedMethod>
       <code><![CDATA[add]]></code>
     </DeprecatedMethod>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function injectSelfLink(LinkCollectionAwareInterface $resource, $route, $routeIdentifier = 'id')]]></code>
-    </MissingOverrideAttribute>
     <RedundantCastGivenDocblockType>
       <code><![CDATA[(string) $route]]></code>
     </RedundantCastGivenDocblockType>
@@ -488,10 +458,6 @@
     <DeprecatedClass>
       <code><![CDATA[$view]]></code>
     </DeprecatedClass>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function getConfig(): array]]></code>
-      <code><![CDATA[public function onBootstrap(EventInterface $e): void]]></code>
-    </MissingOverrideAttribute>
     <UnusedClass>
       <code><![CDATA[Module]]></code>
     </UnusedClass>
@@ -514,11 +480,6 @@
     <ImplementedReturnTypeMismatch>
       <code><![CDATA[self]]></code>
     </ImplementedReturnTypeMismatch>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function getController()]]></code>
-      <code><![CDATA[public function setController(DispatchableInterface $controller)]]></code>
-      <code><![CDATA[public function setEventManager(EventManagerInterface $events)]]></code>
-    </MissingOverrideAttribute>
     <MixedArrayAssignment>
       <code><![CDATA[$parent['_embedded'][$key]]]></code>
       <code><![CDATA[$parent['_embedded'][$key]]]></code>
@@ -653,11 +614,8 @@
       <code><![CDATA[JsonModel]]></code>
     </InvalidExtendClass>
     <MethodSignatureMismatch>
-      <code><![CDATA[public function setTerminal($terminate = true)]]></code>
+      <code><![CDATA[#[Override]]]></code>
     </MethodSignatureMismatch>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function setTerminal($terminate = true)]]></code>
-    </MissingOverrideAttribute>
     <PossiblyUnusedMethod>
       <code><![CDATA[isResource]]></code>
       <code><![CDATA[setPayload]]></code>
@@ -688,11 +646,8 @@
       <code><![CDATA[JsonRenderer]]></code>
     </InvalidExtendClass>
     <MethodSignatureMismatch>
-      <code><![CDATA[public function render($nameOrModel, $values = null)]]></code>
+      <code><![CDATA[#[Override]]]></code>
     </MethodSignatureMismatch>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function render($nameOrModel, $values = null)]]></code>
-    </MissingOverrideAttribute>
     <PossiblyUnusedMethod>
       <code><![CDATA[setViewEvent]]></code>
     </PossiblyUnusedMethod>
@@ -719,14 +674,10 @@
       <code><![CDATA[$this->renderer]]></code>
     </LessSpecificReturnStatement>
     <MethodSignatureMismatch>
+      <code><![CDATA[#[Override]]]></code>
+      <code><![CDATA[#[Override]]]></code>
       <code><![CDATA[public function __construct(HalJsonRenderer $renderer)]]></code>
-      <code><![CDATA[public function injectResponse(ViewEvent $e)]]></code>
-      <code><![CDATA[public function selectRenderer(ViewEvent $e)]]></code>
     </MethodSignatureMismatch>
-    <MissingOverrideAttribute>
-      <code><![CDATA[public function injectResponse(ViewEvent $e)]]></code>
-      <code><![CDATA[public function selectRenderer(ViewEvent $e)]]></code>
-    </MissingOverrideAttribute>
     <MoreSpecificImplementedParamType>
       <code><![CDATA[$renderer]]></code>
     </MoreSpecificImplementedParamType>

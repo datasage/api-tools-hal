@@ -7,6 +7,8 @@ namespace LaminasTest\ApiTools\Hal;
 use Laminas\ApiTools\Hal\Entity;
 use Laminas\ApiTools\Hal\Exception\InvalidEntityException;
 use Laminas\ApiTools\Hal\Link\LinkCollection;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -32,9 +34,9 @@ class EntityTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidEntities
      * @param mixed $entity
      */
+    #[DataProvider('invalidEntities')]
     public function testConstructorRaisesExceptionForNonObjectNonArrayEntity($entity): void
     {
         $this->expectException(InvalidEntityException::class);
@@ -82,9 +84,7 @@ class EntityTest extends TestCase
         self::assertEquals('baz', $secondRetrieval['foo']);
     }
 
-    /**
-     * @group 39
-     */
+    #[Group('39')]
     public function testConstructorAllowsNullIdentifier(): void
     {
         $hal = new Entity(['foo' => 'bar'], null);
@@ -100,10 +100,10 @@ class EntityTest extends TestCase
     }
 
     /**
-     * @group 99
-     * @dataProvider magicProperties
      * @param string $property
      */
+    #[Group('99')]
+    #[DataProvider('magicProperties')]
     public function testPropertyRetrievalEmitsDeprecationNotice($property): void
     {
         $entity    = ['foo' => 'bar'];

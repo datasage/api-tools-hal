@@ -6,6 +6,7 @@ namespace Laminas\ApiTools\Hal\Link;
 
 use Laminas\ApiTools\Hal\Collection;
 use Laminas\ApiTools\Hal\Entity;
+use Override;
 
 use function is_array;
 
@@ -14,6 +15,7 @@ class SelfLinkInjector implements SelfLinkInjectorInterface
     /**
      * {@inheritDoc}
      */
+    #[Override]
     public function injectSelfLink(LinkCollectionAwareInterface $resource, $route, $routeIdentifier = 'id')
     {
         $links = $resource->getLinks();

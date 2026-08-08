@@ -10,6 +10,7 @@ use Laminas\ApiTools\Hal\Plugin\Hal;
 use Laminas\ServiceManager\AbstractPluginManager;
 use Laminas\ServiceManager\FactoryInterface;
 use Laminas\ServiceManager\ServiceLocatorInterface;
+use Override;
 
 class HalControllerPluginFactory implements FactoryInterface
 {
@@ -18,6 +19,7 @@ class HalControllerPluginFactory implements FactoryInterface
      * @param null|array $options
      * @return Hal
      */
+    #[Override]
     public function __invoke(ContainerInterface $container, $requestedName, ?array $options = null)
     {
         $helpers = $container->get('ViewHelperManager');
@@ -30,6 +32,7 @@ class HalControllerPluginFactory implements FactoryInterface
      *
      * @return Hal
      */
+    #[Override]
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         if ($serviceLocator instanceof AbstractPluginManager) {

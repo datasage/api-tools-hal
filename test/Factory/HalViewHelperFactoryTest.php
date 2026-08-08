@@ -55,7 +55,9 @@ class HalViewHelperFactoryTest extends TestCase
         $linkCollectionExtractor = $this->createMock(LinkCollectionExtractor::class);
         $services->setService(LinkCollectionExtractor::class, $linkCollectionExtractor);
 
-        $this->pluginManager = $this->getMockForAbstractClass(AbstractPluginManager::class, [$services]);
+        $this->pluginManager = $this->getMockBuilder(AbstractPluginManager::class)
+            ->setConstructorArgs([$services])
+            ->getMock();
 
         $services->setService('ViewHelperManager', $this->pluginManager);
 
