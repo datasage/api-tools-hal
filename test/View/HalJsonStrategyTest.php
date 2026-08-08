@@ -16,6 +16,7 @@ use Laminas\ApiTools\Hal\View\HalJsonStrategy;
 use Laminas\Http\Header\HeaderInterface;
 use Laminas\Http\Response;
 use Laminas\View\ViewEvent;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class HalJsonStrategyTest extends TestCase
@@ -104,9 +105,9 @@ class HalJsonStrategyTest extends TestCase
     }
 
     /**
-     * @dataProvider halObjects
      * @param array<string, array<array-key, mixed>> $hal
      */
+    #[DataProvider('halObjects')]
     public function testInjectResponseSetsContentTypeHeaderToHalForHalModel($hal): void
     {
         $model = new HalJsonModel(['payload' => $hal]);

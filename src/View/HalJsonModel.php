@@ -7,6 +7,7 @@ namespace Laminas\ApiTools\Hal\View;
 use Laminas\ApiTools\Hal\Collection;
 use Laminas\ApiTools\Hal\Entity;
 use Laminas\View\Model\JsonModel;
+use Override;
 
 use function sprintf;
 use function trigger_error;
@@ -93,6 +94,7 @@ class HalJsonModel extends JsonModel
      * @param  bool $terminate
      * @return self
      */
+    #[Override]
     public function setTerminal($terminate = true)
     {
         return $this;

@@ -16,13 +16,12 @@ use Laminas\Hydrator\HydratorPluginManager;
 use Laminas\Hydrator\ObjectPropertyHydrator as ObjectProperty;
 use Laminas\ServiceManager\ServiceManager;
 use LaminasTest\ApiTools\Hal\Plugin\TestAsset as HalPluginTestAsset;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 class ResourceFactoryTest extends TestCase
 {
-    /**
-     * @group 79
-     */
+    #[Group('79')]
     public function testInjectsLinksFromMetadataWhenCreatingEntity(): void
     {
         $object = new Plugin\TestAsset\Entity('foo', 'Foo');
@@ -125,9 +124,7 @@ class ResourceFactoryTest extends TestCase
         self::assertEquals('closure-param', $params['test-2']);
     }
 
-    /**
-     * @group 79
-     */
+    #[Group('79')]
     public function testInjectsLinksFromMetadataWhenCreatingCollection(): void
     {
         $set = new HalPluginTestAsset\Collection([

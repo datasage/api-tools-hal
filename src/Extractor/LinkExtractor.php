@@ -7,6 +7,7 @@ namespace Laminas\ApiTools\Hal\Extractor;
 use Laminas\ApiTools\ApiProblem\Exception\DomainException;
 use Laminas\ApiTools\Hal\Link\Link;
 use Laminas\ApiTools\Hal\Link\LinkUrlBuilder;
+use Override;
 
 use function sprintf;
 
@@ -23,6 +24,7 @@ class LinkExtractor implements LinkExtractorInterface
     /**
      * @inheritDoc
      */
+    #[Override]
     public function extract(Link $link)
     {
         if (! $link->isComplete()) {

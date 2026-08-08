@@ -15,6 +15,7 @@ use Laminas\Router\Http\TreeRouteStack;
 use Laminas\Router\RouteMatch;
 use Laminas\View\Helper\ServerUrl;
 use Laminas\View\Helper\Url as UrlHelper;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 
@@ -75,9 +76,7 @@ class LinkExtractorTest extends TestCase
         self::assertEquals($expected, $result);
     }
 
-    /**
-     * @group 95
-     */
+    #[Group('95')]
     public function testPassingFalseReuseParamsOptionShouldOmitMatchedParametersInGeneratedLink(): void
     {
         $serverUrlHelper = $this->createMock(ServerUrl::class);

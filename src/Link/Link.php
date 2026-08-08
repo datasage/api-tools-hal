@@ -9,6 +9,7 @@ use Laminas\ApiTools\Hal\Exception;
 use Laminas\Stdlib\ArrayUtils;
 use Laminas\Uri\Exception as UriException;
 use Laminas\Uri\UriFactory;
+use Override;
 use Psr\Link\LinkInterface;
 use Traversable;
 
@@ -384,6 +385,7 @@ class Link implements LinkInterface
      *
      * If a URI template is returned, isTemplated() MUST return True.
      */
+    #[Override]
     public function getHref(): string
     {
         return (string) $this->href;
@@ -396,6 +398,7 @@ class Link implements LinkInterface
      *     Currently, templated links are not yet supported, so this will
      *     always return false.
      */
+    #[Override]
     public function isTemplated(): bool
     {
         return false; // api-tools-hal doesn't support this currently
@@ -409,6 +412,7 @@ class Link implements LinkInterface
      *
      * @return string[]
      */
+    #[Override]
     public function getRels(): array
     {
         return $this->rels;
@@ -422,6 +426,7 @@ class Link implements LinkInterface
      *    is either a PHP primitive or an array of PHP strings. If no values are
      *    found an empty array MUST be returned.
      */
+    #[Override]
     public function getAttributes(): array
     {
         return $this->attributes;

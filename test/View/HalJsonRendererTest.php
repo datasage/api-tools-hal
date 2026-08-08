@@ -14,6 +14,7 @@ use Laminas\ApiTools\Hal\View\HalJsonRenderer;
 use Laminas\View\HelperPluginManager;
 use Laminas\View\Model\JsonModel;
 use Laminas\View\Model\ViewModel;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -41,9 +42,9 @@ class HalJsonRendererTest extends TestCase
     }
 
     /**
-     * @dataProvider nonHalJsonModels
      * @param ViewModel $model
      */
+    #[DataProvider('nonHalJsonModels')]
     public function testRenderGivenNonHalJsonModelShouldReturnDataInJsonFormat($model): void
     {
         $payload = $this->renderer->render($model);
@@ -71,7 +72,7 @@ class HalJsonRendererTest extends TestCase
             ->expects($this->once())
             ->method('renderEntity')
             ->with($halEntity)
-            ->will($this->returnValue($entity));
+            ->willReturn($entity);
 
         $this->renderer->setHelperPluginManager($helperPluginManager);
 
@@ -98,7 +99,7 @@ class HalJsonRendererTest extends TestCase
             ->expects($this->once())
             ->method('renderCollection')
             ->with($halCollection)
-            ->will($this->returnValue($collection));
+            ->willReturn($collection);
 
         $this->renderer->setHelperPluginManager($helperPluginManager);
 
@@ -122,7 +123,7 @@ class HalJsonRendererTest extends TestCase
             ->expects($this->once())
             ->method('renderCollection')
             ->with($halCollection)
-            ->will($this->returnValue($apiProblem));
+            ->willReturn($apiProblem);
 
         $this->renderer->setHelperPluginManager($helperPluginManager);
 
@@ -149,7 +150,7 @@ class HalJsonRendererTest extends TestCase
         $helperPluginManager
             ->method('get')
             ->with('Hal')
-            ->will($this->returnValue($halPlugin));
+            ->willReturn($halPlugin);
 
         return $helperPluginManager;
     }

@@ -9,6 +9,7 @@ use Laminas\ApiTools\ApiProblem\ApiProblem;
 use Laminas\ApiTools\Hal\Collection;
 use Laminas\Paginator\Paginator;
 use Laminas\Stdlib\ArrayUtils;
+use Override;
 use Traversable;
 
 use function count;
@@ -19,6 +20,7 @@ class PaginationInjector implements PaginationInjectorInterface
     /**
      * @inheritDoc
      */
+    #[Override]
     public function injectPaginationLinks(Collection $halCollection)
     {
         $collection = $halCollection->getCollection();

@@ -15,6 +15,7 @@ use Laminas\View\HelperPluginManager;
 use Laminas\View\Model\ModelInterface;
 use Laminas\View\Renderer\JsonRenderer;
 use Laminas\View\ViewEvent;
+use Override;
 
 /**
  * Handles rendering of the following:
@@ -96,6 +97,7 @@ class HalJsonRenderer extends JsonRenderer
      * @param  null|array|ArrayAccess $values
      * @return string
      */
+    #[Override]
     public function render($nameOrModel, $values = null)
     {
         if (! $nameOrModel instanceof HalJsonModel) {

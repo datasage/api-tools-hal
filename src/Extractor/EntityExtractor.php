@@ -8,6 +8,7 @@ use ArrayObject;
 use JsonSerializable;
 use Laminas\ApiTools\Hal\EntityHydratorManager;
 use Laminas\Hydrator\ExtractionInterface;
+use Override;
 use SplObjectStorage;
 
 use function get_object_vars;
@@ -36,6 +37,7 @@ class EntityExtractor implements ExtractionInterface
     /**
      * @inheritDoc
      */
+    #[Override]
     public function extract(object $object): array
     {
         if (isset($this->serializedEntities[$object])) {
