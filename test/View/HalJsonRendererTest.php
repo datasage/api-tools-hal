@@ -148,6 +148,7 @@ class HalJsonRendererTest extends TestCase
         $halPlugin           = $this->createMock(HalPlugin::class);
 
         $helperPluginManager
+            ->expects($this->atLeastOnce())
             ->method('get')
             ->with('Hal')
             ->willReturn($halPlugin);

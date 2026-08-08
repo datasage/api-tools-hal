@@ -27,7 +27,7 @@ class LinkExtractorTest extends TestCase
 
     public function testExtractGivenIncompleteLinkShouldThrowException(): void
     {
-        $linkUrlBuilder = $this->createMock(LinkUrlBuilder::class);
+        $linkUrlBuilder = $this->createStub(LinkUrlBuilder::class);
         $linkExtractor  = new LinkExtractor($linkUrlBuilder);
 
         $link = $this->prophesize(Link::class);
@@ -39,7 +39,7 @@ class LinkExtractorTest extends TestCase
 
     public function testExtractGivenLinkWithUrlShouldReturnThisOne(): void
     {
-        $linkUrlBuilder = $this->createMock(LinkUrlBuilder::class);
+        $linkUrlBuilder = $this->createStub(LinkUrlBuilder::class);
         $linkExtractor  = new LinkExtractor($linkUrlBuilder);
 
         $params = [
@@ -55,7 +55,7 @@ class LinkExtractorTest extends TestCase
 
     public function testExtractShouldComposeAnyPropertiesInLink(): void
     {
-        $linkUrlBuilder = $this->createMock(LinkUrlBuilder::class);
+        $linkUrlBuilder = $this->createStub(LinkUrlBuilder::class);
         $linkExtractor  = new LinkExtractor($linkUrlBuilder);
 
         $link   = Link::factory([
@@ -79,7 +79,7 @@ class LinkExtractorTest extends TestCase
     #[Group('95')]
     public function testPassingFalseReuseParamsOptionShouldOmitMatchedParametersInGeneratedLink(): void
     {
-        $serverUrlHelper = $this->createMock(ServerUrl::class);
+        $serverUrlHelper = $this->createStub(ServerUrl::class);
         $urlHelper       = new UrlHelper();
 
         $linkUrlBuilder = new LinkUrlBuilder($serverUrlHelper, $urlHelper);

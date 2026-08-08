@@ -17,7 +17,7 @@ class LinkCollectionExtractorTest extends TestCase
 
     public function setUp(): void
     {
-        $linkExtractor = $this->createMock(LinkExtractor::class);
+        $linkExtractor = $this->createStub(LinkExtractor::class);
 
         $this->linkCollectionExtractor = new LinkCollectionExtractor($linkExtractor);
     }

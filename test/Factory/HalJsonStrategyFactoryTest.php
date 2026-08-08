@@ -14,7 +14,7 @@ class HalJsonStrategyFactoryTest extends TestCase
 {
     public function testInstantiatesHalJsonStrategy(): void
     {
-        $halJsonRenderer = $this->createMock(HalJsonRenderer::class);
+        $halJsonRenderer = $this->createStub(HalJsonRenderer::class);
 
         $services = new ServiceManager();
         $services->setService('Laminas\ApiTools\Hal\JsonRenderer', $halJsonRenderer);

@@ -45,7 +45,7 @@ class ModuleTest extends TestCase
 
         $view = new View();
 
-        $eventManager = $this->createMock(EventManager::class);
+        $eventManager = $this->createStub(EventManager::class);
 
         $view->setEventManager($eventManager);
 
