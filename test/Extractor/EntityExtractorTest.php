@@ -6,7 +6,7 @@ namespace LaminasTest\ApiTools\Hal\Extractor;
 
 use ArrayObject;
 use Laminas\ApiTools\Hal\EntityHydratorManager;
-use laminas\apitools\hal\extractor\entityextractor;
+use Laminas\ApiTools\Hal\Extractor\EntityExtractor;
 use Laminas\Hydrator\ObjectProperty;
 use Laminas\Hydrator\ObjectPropertyHydrator;
 use LaminasTest\ApiTools\Hal\Plugin\TestAsset;
@@ -37,7 +37,7 @@ class EntityExtractorTest extends TestCase
         $entityHydratorManager = $this->prophesize(EntityHydratorManager::class);
         $entityHydratorManager->getHydratorForEntity($entity)->willReturn($hydrator);
 
-        $extractor = new entityextractor($entityHydratorManager->reveal());
+        $extractor = new EntityExtractor($entityHydratorManager->reveal());
 
         self::assertSame($extractor->extract($entity), $hydrator->extract($entity));
     }
@@ -48,7 +48,7 @@ class EntityExtractorTest extends TestCase
         $entityHydratorManager = $this->prophesize(EntityHydratorManager::class);
         $entityHydratorManager->getHydratorForEntity($entity)->willReturn(null);
 
-        $extractor = new entityextractor($entityHydratorManager->reveal());
+        $extractor = new EntityExtractor($entityHydratorManager->reveal());
         $data      = $extractor->extract($entity);
 
         self::assertArrayHasKey('id', $data);
@@ -62,7 +62,7 @@ class EntityExtractorTest extends TestCase
         $entityHydratorManager = $this->prophesize(EntityHydratorManager::class);
         $entityHydratorManager->getHydratorForEntity($entity)->willReturn(null)->shouldBeCalledTimes(1);
 
-        $extractor = new entityextractor($entityHydratorManager->reveal());
+        $extractor = new EntityExtractor($entityHydratorManager->reveal());
 
         $data1 = $extractor->extract($entity);
         $data2 = $extractor->extract($entity);
@@ -77,7 +77,7 @@ class EntityExtractorTest extends TestCase
         $entityHydratorManager = $this->prophesize(EntityHydratorManager::class);
         $entityHydratorManager->getHydratorForEntity($entity)->willReturn(null)->shouldBeCalledTimes(1);
 
-        $extractor = new entityextractor($entityHydratorManager->reveal());
+        $extractor = new EntityExtractor($entityHydratorManager->reveal());
 
         $this->assertSame($data, $extractor->extract($entity));
     }

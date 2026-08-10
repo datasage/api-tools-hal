@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Laminas\ApiTools\Hal\Factory;
 
 // phpcs:ignore WebimpressCodingStandard.PHP.CorrectClassNameCase.Invalid
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Hal\Exception;
 use Laminas\ApiTools\Hal\Extractor\LinkCollectionExtractor;
 use Laminas\ApiTools\Hal\Link;
@@ -17,6 +16,7 @@ use Laminas\Hydrator\HydratorInterface;
 use Laminas\Hydrator\HydratorPluginManager;
 use Laminas\ServiceManager\AbstractPluginManager;
 use Laminas\ServiceManager\ServiceLocatorInterface;
+use Psr\Container\ContainerInterface;
 
 use function assert;
 use function sprintf;
@@ -81,18 +81,5 @@ class HalViewHelperFactory
         }
 
         return $helper;
-    }
-
-    /**
-     * Proxies to __invoke() to provide backwards compatibility.
-     *
-     * @deprecated since 1.4.0; use __invoke instead.
-     *
-     * @param  ServiceLocatorInterface $container
-     * @return Plugin\Hal
-     */
-    public function createService($container)
-    {
-        return $this($container);
     }
 }

@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Laminas\ApiTools\Hal\Factory;
 
 // phpcs:ignore WebimpressCodingStandard.PHP.CorrectClassNameCase.Invalid
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Hal\Metadata;
 use Laminas\Hydrator\HydratorPluginManager;
 use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
 use function is_array;

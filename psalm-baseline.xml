@@ -138,12 +138,6 @@
     <ClassMustBeFinal>
       <code><![CDATA[HalControllerPluginFactory]]></code>
     </ClassMustBeFinal>
-    <DeprecatedInterface>
-      <code><![CDATA[HalControllerPluginFactory]]></code>
-    </DeprecatedInterface>
-    <DeprecatedMethod>
-      <code><![CDATA[getServiceLocator]]></code>
-    </DeprecatedMethod>
     <MixedAssignment>
       <code><![CDATA[$helpers]]></code>
     </MixedAssignment>

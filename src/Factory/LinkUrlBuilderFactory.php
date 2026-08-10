@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Laminas\ApiTools\Hal\Factory;
 
 // phpcs:ignore WebimpressCodingStandard.PHP.CorrectClassNameCase.Invalid
-use Interop\Container\ContainerInterface;
 use Laminas\ApiTools\Hal\Link\LinkUrlBuilder;
 use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\View\Helper\ServerUrl;
 use Laminas\View\Helper\Url;
+use Psr\Container\ContainerInterface;
 
 use function assert;
 
