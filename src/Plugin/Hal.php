@@ -49,7 +49,7 @@ use function intval;
 use function is_array;
 use function is_object;
 use function method_exists;
-use function spl_object_hash;
+use function spl_object_id;
 use function sprintf;
 use function trigger_error;
 
@@ -676,7 +676,7 @@ class Hal extends AbstractHelper implements
             }
 
             if ($maxDepth === null) {
-                $entityHash = spl_object_hash($entity);
+                $entityHash = spl_object_id($entity);
 
                 if (isset($this->entityHashStack[$entityHash])) {
                     // we need to clear the stack, as the exception may be caught and the plugin may be invoked again
